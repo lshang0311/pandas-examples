@@ -15,4 +15,3 @@ print(df.dtypes)
 df['date'] = pd.to_datetime(df['date'], format="%Y%m%d")
 print(df)
 print(df.dtypes)
-
