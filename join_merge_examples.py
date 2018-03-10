@@ -12,7 +12,6 @@ city,state
 sydney,nsw
 brisbane,qld
 perth,sa
-
 """
 
 df_1 = pd.read_csv(pd.compat.StringIO(weather))
