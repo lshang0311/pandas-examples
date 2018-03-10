@@ -1,4 +1,5 @@
 import pandas as pd
+from decimal import Decimal
 
 """
 Apply a function to each row of a DataFrame to create a new column
@@ -7,12 +8,14 @@ Apply a function to each row of a DataFrame to create a new column
 
 
 def create_price_label(row):
-    return row['name'].title() + " $" + str(row['price'])
+    price = Decimal(row['price'])
+    price = round(price, 2)
+    return row['name'].title() + " $" + str(price)
 
 
 fruit_price = r"""name,price
-banana,2.55
-grape,5.35
+banana,2.5
+grape,5.356
 apple,4.99
 """
 
