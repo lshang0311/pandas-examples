@@ -1,14 +1,12 @@
 import pandas as pd
 
-weather = r"""
-city,weather
+weather = r"""city,weather
 sydney,rain
 melbourne,sunny
 brisbane,sunny
 """
 
-city = r"""
-city,state
+city = r"""city,state
 sydney,nsw
 brisbane,qld
 perth,sa
