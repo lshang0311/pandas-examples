@@ -12,5 +12,6 @@ df = pd.DataFrame(
     columns=list(col_names)
 )
 
+# remove '$' in the column names
 df.columns = [col.strip('$') for col in df.columns]
 print(df)
