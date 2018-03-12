@@ -7,10 +7,8 @@ df = pd.DataFrame(
     index=[11, 22, 2, 12, 4]
 )
 
-
 df.reset_index(inplace=True)
 print(df)
-
 
 # sort the rows
 df_sorted = df.sort_index(ascending=False)
