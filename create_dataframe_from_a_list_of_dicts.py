@@ -17,6 +17,5 @@ list_of_dicts = [
         'weather': 'rain'
     }
 ]
-
 df = pd.DataFrame(list_of_dicts)
 print(df)
