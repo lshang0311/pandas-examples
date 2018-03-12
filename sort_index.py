@@ -4,10 +4,13 @@ import pandas as pd
 df = pd.DataFrame(
     data=np.random.randint(0, 10, (5, 3)),
     columns=list(['C', 'A', 'B']),
-    index=[1, 3, 2, 0, 4]
+    index=[11, 22, 2, 12, 4]
 )
 
+
+df.reset_index(inplace=True)
 print(df)
+
 
 # sort the rows
 df_sorted = df.sort_index(ascending=False)
