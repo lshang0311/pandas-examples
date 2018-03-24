@@ -7,6 +7,7 @@ from tabulate import tabulate
 
 """
 
+# data
 data = {
     'spike-2': [1, 2, 3],
     'hey spke': [4, 5, 6],
@@ -16,7 +17,7 @@ data = {
 df = pd.DataFrame(data=data)
 print(tabulate(df, headers='keys', tablefmt='psql'))
 
+# filter
 df_filtered = df.filter(regex='spike')
 print('filtered:')
 print(tabulate(df_filtered, headers='keys', tablefmt='psql'))
-
