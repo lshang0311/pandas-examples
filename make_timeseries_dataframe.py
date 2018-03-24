@@ -16,5 +16,6 @@ df.index = pd.date_range(
 )
 print(df)
 
+# show
 df.plot(figsize=(10, 6), marker='o')
 plt.show()
