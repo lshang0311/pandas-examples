@@ -2,6 +2,7 @@ import pandas as pd
 
 """
 https://pandas.pydata.org/pandas-docs/stable/reshaping.html
+https://pandas.pydata.org/pandas-docs/stable/generated/pandas.pivot_table.html
 """
 
 # data
@@ -24,6 +25,10 @@ date,variable,value
 """
 df = pd.read_csv(pd.compat.StringIO(data))
 
-# reshape
-df = df.pivot(index='date', columns='variable', values='value')
-print(df)
+print('Use pivot:')
+table = df.pivot(index='date', columns='variable', values='value')
+print(table)
+
+print('\nUse pivot_table:')
+table = pd.pivot_table(df, index=['date'], values='value', columns=['variable'], aggfunc=lambda x: x)
+print(table)
