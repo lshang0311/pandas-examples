@@ -24,6 +24,6 @@ print(train.sort_index())
 print(test.sort_index())
 
 # use sklearn
-train, test = train_test_split(df, test_size=0.2)
+train, test = train_test_split(df, test_size=0.2, random_state=1)
 print(train.sort_index())
 print(test.sort_index())
