@@ -32,3 +32,8 @@ print(table)
 print('\nUse pivot_table:')
 table = pd.pivot_table(df, index=['date'], values='value', columns=['variable'], aggfunc=lambda x: x)
 print(table)
+
+print('\nIn case that time stamps are the index:')
+df = pd.read_csv(pd.compat.StringIO(data), index_col='date')
+table = df.pivot(index=None, columns='variable', values='value')
+print(table)
