@@ -20,11 +20,17 @@ df = pd.read_csv(pd.compat.StringIO(str_data),
                  date_parser=lambda x: pd.datetime.strptime(x, '%Y-%m-%d')
                  )
 
+# filter - 1
 is_open = df['open'] == 'Y'
 store_id = df['store'] == 2
 print(df[is_open & store_id])
 
+# filter - 2
 cond_1 = df['open'].notnull()
 cond_2 = df['sales'] > 100
 cond = cond_1 & cond_2
+print(df[cond])
+
+# filter - 3
+cond = pd.isnull(df['open'])
 print(df[cond])
