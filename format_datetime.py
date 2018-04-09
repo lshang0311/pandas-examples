@@ -1,10 +1,10 @@
 import pandas as pd
 
 str_data = r"""
-date, weather
-20180304, cloudy
-20180305, sunny
-20180306, rain
+date,weather
+20180304,cloudy
+20180305,sunny
+20180306,rain
 """
 
 df = pd.read_csv(pd.compat.StringIO(str_data))
