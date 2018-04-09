@@ -20,4 +20,6 @@ lgd = plt.legend()
 t0 = 'Sales_' + lgd.get_texts()[0]._text
 t1 = 'Sales_' + lgd.get_texts()[1]._text
 ax.legend(labels=[t0, t1])
+ax.set_xticklabels([x.strftime('%Y-%m-%d') for x in df.index])
+plt.xticks(rotation=10)
 plt.show()
