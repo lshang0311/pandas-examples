@@ -21,11 +21,21 @@ df.set_index(['DATE'], inplace=True)
 assert isinstance(df.index, pd.core.indexes.datetimes.DatetimeIndex)
 print(df)
 
-# use lambda
+# use lambda - specify column indices
 df = pd.read_csv(
     pd.compat.StringIO(data),
     index_col='date',
     parse_dates={'date': [1, 2, 3]},
+    date_parser=lambda x: pd.datetime.strptime(x, '%Y Mon%m D%d')
+)
+assert isinstance(df.index, pd.core.indexes.datetimes.DatetimeIndex)
+print(df)
+
+# use lambda - specify column names
+df = pd.read_csv(
+    pd.compat.StringIO(data),
+    index_col='date',
+    parse_dates={'date': ['year', 'month', 'day']},
     date_parser=lambda x: pd.datetime.strptime(x, '%Y Mon%m D%d')
 )
 assert isinstance(df.index, pd.core.indexes.datetimes.DatetimeIndex)
