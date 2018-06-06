@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn import preprocessing
 
+# data
 str_data = r"""date,language,ex_complete,test_complete
 2018-06-01,python,0,1
 2018-06-02,python,1,2
@@ -26,5 +27,6 @@ scaler = preprocessing.MinMaxScaler()
 df[df.columns] = scaler.fit_transform(df[df.columns])
 print(df)
 
-df_inv = pd.DataFrame(scaler.inverse_transform(df))
+# inverse
+df_inv = pd.DataFrame(scaler.inverse_transform(df), columns=df.columns, index=df.index)
 print(df_inv)
