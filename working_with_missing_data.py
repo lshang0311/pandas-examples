@@ -1,8 +1,12 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.ticker as mtick
 
 """
 https://pandas.pydata.org/pandas-docs/version/0.22.0/missing_data.html
+https://matplotlib.org/users/gridspec.html
+https://matplotlib.org/examples/pylab_examples/legend_demo3.html
+https://stackoverflow.com/questions/38152356/matplotlib-dollar-sign-with-thousands-comma-tick-labels
 
 """
 
@@ -12,9 +16,8 @@ data = r"""date,col_1,unwanted_1,unwanted_2
 2018-06-12,NaN,a,2
 2018-06-13,3,b,NaN
 2018-06-14,NaN,x,3
-2018-06-15,5,c,5
+2018-06-15,NaN,c,5
 2018-06-16,6,d,7
-2018-06-20,NaN,d,7
 """
 
 df = pd.read_csv(
@@ -26,9 +29,30 @@ df = pd.read_csv(
 )
 assert isinstance(df.index, pd.core.indexes.datetimes.DatetimeIndex)
 
-df.plot(style='-x', color='k', title='original')
+style = 'bmh'
+with plt.style.context(style):
+    fig = plt.figure(figsize=(7, 6))
+    layout = (2, 1)
+    ax_1 = plt.subplot2grid(layout, (0, 0))
+    ax_2 = plt.subplot2grid(layout, (1, 0), sharex=ax_1)
 
-# interpolation
-df = df.interpolate(method='time')
-df.plot(style='-o', color='r', title='interpolated')
-plt.show()
+    df.plot(ax=ax_1, style='-.s', color='k', title='original')
+
+    df = df.interpolate(method='time')
+    df.plot(ax=ax_2, style='-o', color='r', title='interpolated')
+
+    fmt = '${x:,.0f}'
+    tick = mtick.StrMethodFormatter(fmt)
+    ax_1.yaxis.set_major_formatter(tick)
+    ax_1.set_ylabel('col 1', rotation=0, fontsize=10, labelpad=20)
+
+    ax_1.legend(['col 1'], shadow=True, fancybox=True, loc='lower right', title='Legend')
+    ax_2.legend(['col 2'], shadow=True, fancybox=True, loc='lower right')
+
+    ax_1.get_legend().get_title().set_color("red")
+
+    ax_1.grid(color='y', which='minor')
+    ax_2.grid(color='y', which='minor')
+
+    plt.tight_layout()
+    plt.show()
