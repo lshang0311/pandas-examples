@@ -1,5 +1,10 @@
 import pandas as pd
 
+"""
+datetime format:
+  https://docs.python.org/3.6/library/datetime.html#strftime-and-strptime-behavior
+"""
+
 str_data = r"""
 date,weather
 20180304,cloudy
