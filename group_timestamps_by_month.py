@@ -11,6 +11,9 @@ date,col_1
 2018-04-02,1
 """
 
+
+# datetime format:
+#  https://docs.python.org/3.6/library/datetime.html#strftime-and-strptime-behavior
 df = pd.read_csv(pd.compat.StringIO(data),
                  index_col=['date'],
                  parse_dates=True,
