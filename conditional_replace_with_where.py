@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.stats import norm, binom
+from io import StringIO
 
 """
 https://en.wikipedia.org/wiki/Quantile
@@ -22,7 +23,7 @@ str_data = r"""date,x,y
 2017-01-08,8,4
 2017-01-09,9,4
 """
-df = pd.read_csv(pd.compat.StringIO(str_data))
+df = pd.read_csv(StringIO(str_data))
 df.set_index(['date'], inplace=True)
 
 df['x'] = df['x'].astype(float)
